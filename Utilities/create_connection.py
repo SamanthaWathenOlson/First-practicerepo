@@ -1,17 +1,14 @@
-import os
-
 from psycopg import connect, OperationalError
-
 
 
 def create_connection():
     try:
         conn = connect(
-            host="",
-            dbname="",
-            user="",
-            password="",
-            port="",
+            host="os.environ.get[HOST]",
+            dbname="os.environ.get[DATABASE]",
+            user="os.environ.get[USERNAME]",
+            password="os.environ.get[PASSWORD]",
+            port="os.environ.get[PORT]",
         )
         return conn
     except OperationalError:
@@ -20,5 +17,3 @@ def create_connection():
     connection = create_connection()
 
     print(connection)
-
-
