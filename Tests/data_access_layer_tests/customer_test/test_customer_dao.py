@@ -7,9 +7,11 @@ customer_dao = CustomerDAOImp()
 def test_create_customer_record_success():
     test_customer = Customer(0, "Fabulous", "Ryan")
     returned_customer = customer_dao.insert_into_customers_table(test_customer)
-    assert returned_customer.customer_id != 0
+    assert returned_customer.customer_id != 0 #will have to increase to 1 to create a customer
 
 
 def test_delete_customer_record_success():
-    result = customer_dao.delete_from_customers_table_by_id(-1)
+    result = customer_dao.delete_from_customers_table_by_id(-1) #willbhave to 1 to psotive delte a record
     assert result
+
+
