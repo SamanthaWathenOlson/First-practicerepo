@@ -1,3 +1,4 @@
+from connection_problem.connection_problem import ConnectionProblem
 from data_access_layer.customer_data_access.customer_dao_interface import CustomerDAOInterface
 from entities.customer_class_info import Customer
 from Utilities.create_connection import connection
@@ -13,6 +14,8 @@ class CustomerDAOImp(CustomerDAOInterface):
         returned_id = cursor.fetchone()[0]
         customer_obj.customer_id = returned_id
         return customer_obj
+    except ConnectionProblem as e:
+        raise ConnectionProblem(str(e))
 
     def delete_from_customers_table_by_id(self, customer_id: int) -> bool:
         sql = "delete from customer where customer_id = %s"

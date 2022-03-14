@@ -12,3 +12,4 @@ class CustomerDAOInterface(ABC):
     @abstractmethod
     def delete_from_customers_table_by_id(self, customer_id: int) -> bool:
         pass
+

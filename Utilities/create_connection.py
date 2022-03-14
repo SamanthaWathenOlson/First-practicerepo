@@ -14,7 +14,9 @@ def create_connection():
         )
         return conn
     except OperationalError:
-        return "Could not connect to database"
+        return "Could not connect to database"  # need to handle when it doesn't
+    except ConnectionError:
+        return "Connection error. Please try again"
 
 
 connection = create_connection()
