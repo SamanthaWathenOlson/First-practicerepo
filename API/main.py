@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request
 
 from connection_problem.connection_problem import ConnectionProblem
@@ -9,11 +8,12 @@ from entities.customer_class_info import Customer
 from service_layer.customer_service.customer_service_imp import CustomerServiceImp
 
 app: Flask = Flask(__name__)
+
 customer_dao = CustomerDAOImp()
 customer_service = CustomerServiceImp(customer_dao)
 
 
-@app.route("/customer", methods=["GET"])
+@app.route("/customer", methods=["POST"])
 def create_customer():
     try:
         customer_info_as_dictionary = request.get_json()
@@ -37,9 +37,7 @@ def create_customer():
 
 
 @app.route("/customer/<customer_id>", method=["DELETE"])
-
-
-def delete_customer_by_id():
+def delete_customer_by_id(customer_id: str):
     try:
         result = customer_service.service_delete_customer_record_by_id(customer_id)
         result_dictionary = {"result": result}
@@ -57,5 +55,6 @@ def delete_customer_by_id():
         error_message = {"errorMessage": str(e)}
         error_json = jsonify(error_message)
         return error_json, 404
+
 
 app.run()

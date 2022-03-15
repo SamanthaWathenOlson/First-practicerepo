@@ -6,9 +6,9 @@ from entities.customer_class_info import Customer
 
 class CustomerDAOImp(CustomerDAOInterface):
 
-    def insert_into_customers_table(self, customer: Customer) -> Customer:
+    def insert_into_customer_table(self, customer: Customer) -> Customer:
         try:
-            sql = "insert into customers values(default, %s, %s) returning customer_id"
+            sql = "insert into customer values(default, %s, %s) returning customer_id"
             cursor = connection.cursor()
             cursor.execute(sql, (customer.first_name, customer.last_name))
             connection.commit()
@@ -18,9 +18,9 @@ class CustomerDAOImp(CustomerDAOInterface):
         except ConnectionProblem as e:
             raise ConnectionProblem(str(e))
 
-    def delete_from_customers_table_by_id(self, customer_id: int) -> bool:
+    def delete_from_customer_table_by_id(self, customer_id: int) -> bool:
         try:
-            sql = "delete from customers where customer_id = %s"
+            sql = "delete from customer where customer_id = %s"
             cursor = connection.cursor()
             cursor.execute(sql, [customer_id])
             connection.commit()
