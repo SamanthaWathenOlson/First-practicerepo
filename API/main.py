@@ -1,5 +1,7 @@
-from flask import Flask
 
+from flask import Flask, jsonify, request
+
+from connection_problem.connection_problem import ConnectionProblem
 from connection_problem.nothing_deleted import NothingDeleted
 from custom_exception.bad_name import BadName
 from data_access_layer.customer_data_access.customer_dao_imp import CustomerDAOImp
@@ -34,7 +36,7 @@ def create_customer():
         return error_json, 404
 
 
-app.route("/customer/customer_id", method=["DELETE"])
+@app.route("/customer/<customer_id>", method=["DELETE"])
 
 
 def delete_customer_by_id():
@@ -56,4 +58,4 @@ def delete_customer_by_id():
         error_json = jsonify(error_message)
         return error_json, 404
 
-    app.run()
+app.run()

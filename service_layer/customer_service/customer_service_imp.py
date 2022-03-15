@@ -6,7 +6,7 @@ from service_layer.customer_service.customer_service_interface import CustomerSe
 
 class CustomerServiceImp(CustomerServiceInterface):
 
-    def service_create_customer_record(self, customer: Customer) ->Customer:
+    def service_create_customer_record(self, customer: Customer) -> Customer:
         if type(customer.first_name) != str:
             raise BadName("Please enter a valid first name")
         elif type(customer.last_name) != str:
