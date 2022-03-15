@@ -7,9 +7,8 @@ class Customer:
         self.last_name = last_name
 
     def convert_to_dictionary(self):
-        customer = Customer:
         return {
-            "customer_id" = self.customer_id,
-            "first_name" = self.first_name,
-            "last_name" = self.last_name
-            }
+            "customerId":self.customer_id,
+            "firstName":self.first_name,
+            "lastName":self.last_name
+        }
