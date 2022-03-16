@@ -7,7 +7,7 @@ class Account:
 
     def convert_to_dictionary(self):
         return {
-            "customerId": self.customer_id,
             "balance": self.balance,
+            "customerId": self.customer_id,
             "account_id": self.account_id
         }

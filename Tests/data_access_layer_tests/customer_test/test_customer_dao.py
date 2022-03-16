@@ -9,8 +9,8 @@ customer_dao = CustomerDAOImp()
 
 def test_create_customer_record_success():
     test_customer = Customer(0, "Twilight", "Sparkle")
-    returned_customer = customer_dao.insert_into_customer_table(test_customer)
-    assert returned_customer.customer_id != 0  # will have to increase to 1 to create a customer
+    result = customer_dao.insert_into_customer_table(test_customer)
+    assert result.customer_id != 0  # will have to increase to 1 to create a customer
 
 
 def test_create_customer_operational_error_caught():

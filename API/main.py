@@ -36,7 +36,7 @@ def create_customer():
         return error_json, 404
 
 
-@app.route("/customer/<customer_id>", method=["DELETE"])
+@app.route("/customer/<customer_id>", methods=["DELETE"])
 def delete_customer_by_id(customer_id: str):
     try:
         result = customer_service.service_delete_customer_record_by_id(customer_id)
