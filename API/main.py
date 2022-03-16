@@ -17,11 +17,7 @@ customer_service = CustomerServiceImp(customer_dao)
 def create_customer():
     try:
         customer_info_as_dictionary = request.get_json()
-        customer = Customer(
-            customer_info_as_dictionary["customerId"],
-            customer_info_as_dictionary["firstName"],
-            customer_info_as_dictionary["lastName"]
-        )
+        customer = Customer(customer_info_as_dictionary["customerId"], customer_info_as_dictionary["firstName"], customer_info_as_dictionary["lastName"])
         customer_result = customer_service.service_create_customer_record(customer)
         customer_as_dictionary = customer_result.convert_to_dictionary()
         customer_as_json = jsonify(customer_as_dictionary)
